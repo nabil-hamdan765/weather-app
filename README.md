@@ -13,8 +13,8 @@ A desktop weather application built with Electron.
   <img src="assets/photo2.png" width="45%">
 </p>
 <p align="center">
-  <img src="assets/photo3.png" width="45%">
   <img src="assets/photo4.png" width="45%">
+  <img src="assets/photo3.png" width="45%">
 </p>
 ## Installation
 ```bash
