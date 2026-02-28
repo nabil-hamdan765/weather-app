@@ -26,11 +26,13 @@ A desktop weather application built with HTML, CSS, Javascript and ElectronJS
 | `index.html` | HTML layout of the app |
 | `styles.css` | All the styles for the app |
 | `script.js` | Javascript running the code in the background |
-| `main.js` | Electron main process to create a desktop window and load UI |
-| `package.json` | Project metadata & dependencies |
-| `.gitignore` | Files and folders ignored by Git |
 | `assets/` | Contains Images, Icons needed for the app|
+| `main.js` | Electron main process to create a desktop window and load UI |
+| `.gitignore` | Files and folders ignored by Git |
+| `package.json` | Project metadata & dependencies |
 | `package-lock.json` | Auto-generated lock file for dependencies |
+| `forge-config.js` | Settings used by Electron Forge to build and package the desktop app. |
+
 
 ## Installation
 
