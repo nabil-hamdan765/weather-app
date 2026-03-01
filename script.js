@@ -1,101 +1,113 @@
 async function updateWeather() {
-    const url = "https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&current=temperature_2m,is_day,weather_code";
-    const res = await fetch(url);
-    const data = await res.json();
+        navigator.geolocation.getCurrentPosition(async (position) => {
 
-    const temp = data.current.temperature_2m;
-    const isDay = data.current.is_day;
-    const weatherCode = data.current.weather_code;
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
 
-    const getDay = document.querySelector(".app");
-    const starEl = document.querySelector(".big-star");
-    const weatherContent = document.getElementById("weather-content");
-    const tempEl = document.getElementById("temperature");
-    const cloudsEL = document.querySelectorAll(".clouds-1, .clouds-2");
-    const blurEL = document.querySelector(".blur");
-    const treeEl = document.querySelectorAll(".tree");
-    const weatherEl = document.querySelector(".weather-condition");
-    
-    switch (isDay) {
-        case 0:
-            getDay.style.background = "#1C1C6B";
-            starEl.style.background = "url(assets/moon.png)";
-            break;
-        
-        case 1:
-            getDay.style.background = "#c3efff";
-            starEl.style.background = "url(assets/sun.png)";
-            break;
-        default:
-            break;
-    }
+            const url =
+                `https://api.open-meteo.com/v1/forecast` +
+                `?latitude=${lat}&longitude=${lon}` +
+                `&current=temperature_2m,is_day,weather_code` +
+                `&timezone=auto`;
 
-    let weatherDesc;
-    switch (weatherCode) {
-        case 0: 
-            weatherDesc =  "Clear Sky";
-            for (const cloud of cloudsEL) {
-                cloud.style.display = "none";
-            }
-            for (const tree of treeEl) {
-                tree.style.background = "url(assets/tree.png)";
-            }
-            break;
-        case 1:
-        case 2:
-        case 3: 
-            weatherDesc = "Cloudy";
-            for (const cloud of cloudsEL) {
-                cloud.style.display = "block";
-            }
-            for (const tree of treeEl) {
-                tree.style.background = "url(assets/tree.png)";
-            }
-            break;
-        case 45:
-        case 48: 
-            weatherDesc = "Fog";
-            blurEL.style.background = "rgba(113, 135, 152, 0.5)";
-            for (const cloud of cloudsEL) {
-                cloud.style.display = "block";
-            }
-            for (const tree of treeEl) {
-                tree.style.background = "url(assets/tree.png)";
-            }
-            break;
-        case 61:
-        case 63:
-        case 65: 
-            weatherDesc = "Rain";
-            for (const cloud of cloudsEL) {
-                cloud.style.display = "block";
-            }
-            for (const tree of treeEl) {
-                tree.style.background = "url(assets/tree-rain.png)";
-            }
-            weatherEl.style.background = "url(assets/rain.png)";
-            weatherEl.style.animationDuration =  "0.2s";
+            const res = await fetch(url);
+            const data = await res.json();
+
+            const temp = data.current.temperature_2m;
+            const isDay = Number(data.current.is_day);
+            const weatherCode = data.current.weather_code;
+
+            const getDay = document.querySelector(".app");
+            const starEl = document.querySelector(".big-star");
+            const weatherContent = document.getElementById("weather-content");
+            const tempEl = document.getElementById("temperature");
+            const cloudsEL = document.querySelectorAll(".clouds-1, .clouds-2");
+            const blurEL = document.querySelector(".blur");
+            const treeEl = document.querySelectorAll(".tree");
+            const weatherEl = document.querySelector(".weather-condition");
             
-            break;
-        case 71:
-        case 73:
-        case 75: 
-            weatherDesc = "Snow";
-            for (const cloud of cloudsEL) {
-                cloud.style.display = "block";
+            switch (isDay) {
+                case 0:
+                    getDay.style.background = "#1C1C6B";
+                    starEl.style.background = "url(assets/moon.png)";
+                    break;
+                
+                case 1:
+                    getDay.style.background = "#c3efff";
+                    starEl.style.background = "url(assets/sun.png)";
+                    break;
+                default:
+                    break;
             }
-            for (const tree of treeEl) {
-                tree.style.background = "url(assets/tree-snow.png)";
+
+            let weatherDesc;
+            switch (weatherCode) {
+                case 0: 
+                    weatherDesc =  "Clear Sky";
+                    for (const cloud of cloudsEL) {
+                        cloud.style.display = "none";
+                    }
+                    for (const tree of treeEl) {
+                        tree.style.background = "url(assets/tree.png)";
+                    }
+                    break;
+                case 1:
+                case 2:
+                case 3: 
+                    weatherDesc = "Cloudy";
+                    for (const cloud of cloudsEL) {
+                        cloud.style.display = "block";
+                    }
+                    for (const tree of treeEl) {
+                        tree.style.background = "url(assets/tree.png)";
+                    }
+                    break;
+                case 45:
+                case 48: 
+                    weatherDesc = "Fog";
+                    blurEL.style.background = "rgba(113, 135, 152, 0.5)";
+                    for (const cloud of cloudsEL) {
+                        cloud.style.display = "block";
+                    }
+                    for (const tree of treeEl) {
+                        tree.style.background = "url(assets/tree.png)";
+                    }
+                    break;
+                case 61:
+                case 63:
+                case 65: 
+                    weatherDesc = "Rain";
+                    for (const cloud of cloudsEL) {
+                        cloud.style.display = "block";
+                    }
+                    for (const tree of treeEl) {
+                        tree.style.background = "url(assets/tree-rain.png)";
+                    }
+                    weatherEl.style.background = "url(assets/rain.png)";
+                    weatherEl.style.animationDuration =  "0.2s";
+                    
+                    break;
+                case 71:
+                case 73:
+                case 75: 
+                    weatherDesc = "Snow";
+                    for (const cloud of cloudsEL) {
+                        cloud.style.display = "block";
+                    }
+                    for (const tree of treeEl) {
+                        tree.style.background = "url(assets/tree-snow.png)";
+                    }
+                    weatherEl.style.background = "url(assets/snow.png)";
+                    weatherEl.style.animationDuration =  "0.5s";
+                    break;
+                default: 
+                    weatherDesc = "Unknown";
+                    break;
             }
-            weatherEl.style.background = "url(assets/snow.png)";
-            weatherEl.style.animationDuration =  "0.5s";
-            break;
-        default: 
-            weatherDesc = "Unknown";
-            break;
-    }
-    tempEl.textContent = `${temp}°C`;
-    weatherContent.textContent = `It's ${weatherDesc} Today!`;
+            tempEl.textContent = `${temp}°C`;
+            weatherContent.textContent = `It's ${weatherDesc} Today!`;
+        }
+    );
 }
 
 function calender() {
