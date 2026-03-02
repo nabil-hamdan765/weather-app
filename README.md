@@ -61,7 +61,7 @@ npm run package
 This will create an "Out" folder containing the files for the program.
 
 # Gallery
-Sprites were modelled using Asperite
+Sprites were modelled using Aseprite
 <p align="center">
   <img src="assets/gallery/tree-draft.png" width="24%">
   <img src="assets/gallery/sun-draft.png" width="24%">
