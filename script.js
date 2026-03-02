@@ -26,6 +26,7 @@ async function updateWeather() {
             const treeEl = document.querySelectorAll(".tree");
             const weatherEl = document.querySelector(".weather-condition");
             
+            console.log(weatherCode);
             switch (isDay) {
                 case 0:
                     getDay.style.background = "#1C1C6B";
@@ -72,6 +73,13 @@ async function updateWeather() {
                     for (const tree of treeEl) {
                         tree.style.background = "url(assets/tree.png)";
                     }
+                    break;
+                case 51:
+                case 53:
+                case 55:
+                    weatherDesc = "Drizzle";
+                    weatherEl.style.background = "url(assets/rain.png)";
+                    weatherEl.style.animationDuration =  "0.5s";
                     break;
                 case 61:
                 case 63:

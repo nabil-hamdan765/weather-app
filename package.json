@@ -2,13 +2,13 @@
   "name": "leaf-cast",
   "version": "1.0.0",
   "description": "A Simple Weather Widget App",
-  "homepage": "https://github.com/BOBOIBOY765/weather-app#readme",
+  "homepage": "https://github.com/nabil-hamdan765/weather-app#readme",
   "bugs": {
-    "url": "https://github.com/BOBOIBOY765/weather-app/issues"
+    "url": "https://github.com/nabil-hamdan765/weather-app/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/BOBOIBOY765/weather-app.git"
+    "url": "git+https://github.com/nabil-hamdan765/weather-app.git"
   },
   "license": "ISC",
   "author": "Nabil Hamdan",
