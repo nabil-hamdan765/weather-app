@@ -39,7 +39,7 @@ A desktop weather application built with HTML, CSS, Javascript and ElectronJS
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/yourname/weather-app.git
+git clone https://github.com/nabil-hamdan765/weather-app.git
 cd weather-app
 ```
 ### 2. Install Node.js  
